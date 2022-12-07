@@ -1,6 +1,8 @@
 dist/
-assets/
-!assets/Lingdle*
+assets/*.ico
+assets/favicon-*
+assets/apple-touch-icon.png
+assets/android-chrome*
 
 *.bat
 
