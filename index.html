@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.glitch.global/b295cc05-8f17-43c5-b3b9-4adf0c99bf94/apple-touch-icon.png?v=1670367375236" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.glitch.global/b295cc05-8f17-43c5-b3b9-4adf0c99bf94/favicon-32x32.png?v=1670367373878" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.glitch.global/b295cc05-8f17-43c5-b3b9-4adf0c99bf94/favicon-16x16.png?v=1670367375852" />
+        
+        <title>Lingdle</title>
+
+        <link rel="stylesheet" href="/dist/style.css" />
+        <script src="/dist/script.js" defer></script>
+        <script src="https://unpkg.com/confetti-js@0.0.18/dist/index.min.js"></script>
+
+        <meta name="robots" content="index, follow" />
+        <meta name="title" content="Lingdle" />
+        <meta name="description" content="New language every day. Can you guess the language?" />
+        <meta name="keywords" content="wordle, language, languages, lingdle" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="14 days" />
+        <meta name="author" content="roc0ast3r" />
+    </head>
+    <body>
+        <canvas id="confettijs" class="slide" style="display: none;"></canvas>
+        <div class="notice fade" style="display: none;"></div>
+
+        <main>
+            <div class="header">
+                <div class="logo">
+                    <div class="text">
+                        <div>LINGDLE</div>
+                        <div>STATS</div>
+                    </div>
+                </div>
+                <div class="new">New <span class="logo-text">LINGDLE</span> in <div id="new-time"></div></div>
+                <div class="error" style="display: none;">
+                    <div class="logo">ERROR!</div>
+                    <div class="new"></div>
+                </div>
+            </div>
+
+            <section id="home">
+                <div class="phrase"><span></span></div>
+
+                <table class="table">
+                    <tr>
+                        <th>Guess</th>
+                        <th question title="Language Family">F</th>
+                        <th question title="Writing System">S</th>
+                    </tr>
+                    <tr id="guess1">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="guess2">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="guess3">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="guess4">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="guess5">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+
+                <div class="msg expand-2 shake" style="display: none;"></div>
+
+                <input type="text" id="input" />
+                <datalist id="languages"></datalist>
+                <button id="guess">GUESS</button>
+                <button id="share" style="display: none;">SHARE</button>
+            </section>
+
+            <section id="stats" style="display: none;">
+                <div class="streaks">
+                    <div class="streak">
+                        <div class="name">Current Streak</div>
+                        <div class="num" id="current-streak">0</div>
+                    </div>
+                    <div class="streak">
+                        <div class="name">Longest Streak</div>
+                        <div class="num" id="longest-streak">0</div>
+                    </div>
+                </div>
+
+                <div class="win-loss">
+                    <div class="win help" title="Number of wins">0</div>
+                    :
+                    <div class="loss help" title="Number of losses">0</div>
+                    <div class="ratio help" title="Win-loss ratio">0</div>
+                </div>
+
+                <h1 class="help" title="Only counts wins">Guess Distribution</h1>
+                <div class="guess-distribution">
+                    <div class="guesses">
+                        <div class="num">1</div>
+                        <div class="num">2</div>
+                        <div class="num">3</div>
+                        <div class="num">4</div>
+                        <div class="num">5</div>
+                    </div>
+                    <div class="bars">
+                        <div class="bar" style="width: 100%;">0</div>
+                        <div class="bar" style="width: 100%;">0</div>
+                        <div class="bar" style="width: 100%;">0</div>
+                        <div class="bar" style="width: 100%;">0</div>
+                        <div class="bar" style="width: 100%;">0</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "outFile": "../dist/script.js"
+    },
+    "include": [
+        "ts/*.ts",
+        "script.ts",
+        "ts/functions/*.ts"
+    ]
+}

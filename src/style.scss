@@ -1,0 +1,373 @@
+// import fonts
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+
+// set some variables for the fonts
+$mainFont: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$logoFont: "Zen Dots", cursive;
+
+// some other variables
+$bgColor: #222;
+$textColor: #f8f8f8;
+$correctColor: #9f9;
+$incorrectColor: #f99;
+
+// some mixins
+@mixin no-select() {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+@mixin logo() {
+    font-family: $logoFont;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+// main css
+body {
+    background-color: $bgColor;
+    color: $textColor;
+    font-family: $mainFont;
+    overflow-x: hidden;
+}
+
+main {
+    width: 99%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+input {
+    background-color: darken($bgColor, 3%);
+    margin-top: 10px;
+    width: calc(100% - (10px * 2));
+    color: $textColor;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    font-family: $mainFont;
+
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-calendar-picker-indicator {
+        opacity: 0;
+    }
+}
+
+datalist {
+    display: block;
+    background-color: darken($bgColor, 5%);
+    height: 200px;
+    overflow: auto;
+
+    option {
+        padding: 10px;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #fff2;
+        }
+    }
+}
+
+button {
+    @include logo();
+    background-color: darken($bgColor, 3%);
+    margin-top: 10px;
+    border: none;
+    color: $textColor;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+}
+
+// classes
+.table {
+    @include no-select();
+    width: 100%;
+    border-spacing: 5px;
+
+    tr {
+        font-size: 22px;
+
+        th {
+            text-align: left;
+        }
+        td {
+            background-color: darken($bgColor, 3%);
+            padding: 5px;
+
+            &.correct {
+                background-color: $correctColor;
+            }
+            &.incorrect {
+                background-color: $incorrectColor;
+            }
+        }
+    }
+}
+
+.phrase {
+    @include no-select();
+    text-align: center;
+    padding: 30px 5px;
+    font-size: 30px;
+    position: relative;
+
+    span {
+        cursor: pointer;
+    }
+}
+
+.header {
+    @include no-select();
+    text-align: center;
+
+    .logo {
+        @include logo();
+        font-size: 50px;
+        height: 50px;
+        overflow: hidden;
+
+        .text {
+            transition: transform .5s;
+
+            div {
+                width: fit-content;
+                margin: auto;
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            font-size: 40px;
+        }
+    }
+
+    .new {
+        font-size: 18px;
+
+        #new-time {
+            display: inline-block;
+        }
+    }
+}
+
+.notice {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(darken($bgColor, 6%), 0.9);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.msg {
+    padding: 10px 5px;
+    margin-top: 15px;
+    text-align: center;
+    background-color: darken($bgColor, 3%);
+    color: $textColor;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.logo-text {
+    @include logo();
+}
+
+// stats
+#stats {
+    h1 {
+        font-size: 25px;
+        text-align: center;
+        margin: 15px 0 0;
+        padding: 0;
+    }
+
+    .dates {
+        li {
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .streaks {
+        display: flex;
+        margin-top: 10px;
+
+        .streak {
+            text-align: center;
+            width: 50%;
+
+            .name {
+                font-weight: bold;
+                font-size: 30px;
+            }
+            .num {
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+.win-loss {
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    padding-top: 10px;
+
+    .win {
+        display: inline-block;
+        color: $correctColor;
+    }
+    .loss {
+        display: inline-block;
+        color: $incorrectColor;
+    }
+    .ratio {
+        font-size: 50%;
+    }
+}
+
+.guess-distribution {
+    display: flex;
+    font-size: 20px;
+    margin-top: 15px;
+
+    .guesses {
+        padding-right: 5px;
+
+        .num {
+            &:not(:first-child) {
+                margin-top: 5px;
+            }
+        }
+    }
+    .bars {
+        @include no-select();
+
+        width: 100%;
+        .bar {
+            background-color: darken($bgColor, 10%);
+            padding: 0px 5px;
+            text-align: right;
+            overflow: hidden;
+            white-space: nowrap;
+
+            &:not(:first-child) {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.help {
+    cursor: help;
+}
+
+// some other stuff
+[question] {
+    cursor: help;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
+
+#confettijs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+// animations!!!!
+.expand {
+    animation: expand .5s linear;
+    animation-fill-mode: forwards;
+}
+@keyframes expand {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.expand-2 {
+    animation: expand2 1s ease-in-out;
+}
+@keyframes expand2 {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.05) rotate(1deg);
+    }
+    50% {
+        transform: scale(1.05) rotate(-1deg);
+    }
+    75% {
+        transform: scale(1.05) rotate(1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.expand-2_reverse {
+    animation: expand2-reverse 1s ease-in-out;
+}
+@keyframes expand2-reverse {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.05) rotate(-1deg);
+    }
+    50% {
+        transform: scale(1.05) rotate(1deg);
+    }
+    75% {
+        transform: scale(1.05) rotate(-1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.fade {
+    animation: fade 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.slide {
+    animation: slide 5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes slide {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
