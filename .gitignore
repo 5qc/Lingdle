@@ -1,9 +1,9 @@
 dist/
-assets/*.ico
-assets/favicon-*
-assets/apple-touch-icon.png
-assets/android-chrome*
 
 *.bat
+assets/*.ico
+assets/favicon-*
+assets/android-chrome*
 
 lingdle.csv
+assets/apple-touch-icon.png
